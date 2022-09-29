@@ -1,10 +1,10 @@
-import FormCard from './components/FormCard';
+import FormCard from './components/FormCard'
 function App() {
   return (
     <>
-        <FormCard></FormCard>
+      <FormCard></FormCard>
     </>
-  );
+  )
 }
 
-export default App;
+export default App
