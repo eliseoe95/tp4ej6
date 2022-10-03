@@ -5,28 +5,32 @@ import ItemCard from './ItemCard'
 
 const FormCard = () => {
   const coloresLocalStorage =
-    JSON.parse(localStorage.getItem('listaColores')) || []
+     JSON.parse(localStorage.getItem('listaColores')) || []
 
   const [color, setColor] = useState('')
   const [colores, setColores] = useState(coloresLocalStorage)
    const [divcolor, setDivColor] = useState('')
-  useEffect(() => {
-    localStorage.setItem('listaColores', JSON.stringify(colores))
-  }, [colores])
-
+  
   const handleSubmit = (e) => {
     e.preventDefault()
     setColores([...colores, color])
     setColor('')
   }
-  const borrarColor = (nombreColor) =>{
-    let arregloModificado = colores.filter((item) => (item) !== nombreColor);
+  const borrarColor = (index) =>{
+    console.log(colores);
+    let arregloModificado = colores.splice(index,1);
     setColores(arregloModificado);
+    console.log(colores);
   }
    const cambiarColor = (colorIngresado) =>{
      setDivColor(colorIngresado);
      setColor(colorIngresado);
    }
+   useEffect(() => {
+    console.log(colores);
+    localStorage.setItem('listaColores', JSON.stringify(colores))
+  }, [colores])
+
   return (
     <>
       <Container>
